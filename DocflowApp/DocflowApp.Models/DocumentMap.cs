@@ -10,7 +10,7 @@ namespace DocflowApp.Models
 
 
             References(x => x.Folder).Cascade.SaveUpdate();
-            HasMany(x => x.Versions).Inverse().Cascade.SaveUpdate();
+           // HasMany(x => x.Versions).Inverse().Cascade.SaveUpdate();
         }
     }
 }

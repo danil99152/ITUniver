@@ -10,7 +10,7 @@
     <tr>
         <td width=32 />
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.User)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Root)
@@ -23,11 +23,8 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td width=32>
-                <img src="~/Content/images/Eye.png" />
-            </td>
             <td>
-                @Html.ActionLink(item.Name, "Index", new { root = item.Id })
+                @Html.ActionLink(item.FolderName, "Index", new { root = item.Id })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Root)

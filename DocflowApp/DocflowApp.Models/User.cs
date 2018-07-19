@@ -28,6 +28,7 @@ namespace DocflowApp.Models
         [CreationDate]
         public virtual DateTime? WorkStartDate { get; set; }
 
+        [Display(Name = "Создатель пользователя")]
         [CreationAuthor]
         public virtual User CreationAuthor { get; set; }
 

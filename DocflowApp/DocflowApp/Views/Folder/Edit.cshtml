@@ -1,12 +1,16 @@
 ﻿@model DocflowApp.Models.FolderViewModel
+
 @{
-    ViewBag.Title = "Создание папки";
+    ViewBag.Title = $"Редактирование - {Model.Entity.FolderName}";
 }
-<h2>Новый пользователь</h2>
+
+<h2>Edit</h2>
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(m => m.Entity.Id)
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -16,16 +20,19 @@
                 @Html.ValidationMessageFor(model => model.Entity.FolderName, "", new { @class = "text-danger" })
             </div>
         </div>
-        @Html.HiddenFor(model => model.Entity.User)
-        @Html.HiddenFor(model => model.Entity.Date)
-        @Html.HiddenFor(model => model.Entity.Root)
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Создать" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
+
 <div>
-    @Html.ActionLink("К списку", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

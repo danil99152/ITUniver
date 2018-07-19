@@ -1,0 +1,50 @@
+﻿@model DocflowApp.Models.EntityViewModel<Document>
+
+@{
+    ViewBag.Title = Model.Entity.DocName;
+}
+
+<h2></h2>
+
+<div>
+    <hr />
+    <table>
+        <tr>
+            <td style="width:100px;">
+                @Html.DisplayFor(m => m.Entity.Avatar, new { width = "96px" })
+            </td>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entity.DocName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Entity.DocName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entity.WorkStartDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Entity.WorkStartDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Entity.Folder)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Entity.Folder)
+                    </dd>
+
+                </dl>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

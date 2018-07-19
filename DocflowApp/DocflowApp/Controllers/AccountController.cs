@@ -41,7 +41,7 @@ namespace DocflowApp.Controllers
                 var result = SignInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
                 if (result.Result == SignInStatus.Success)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToBackUrl();
                 }
                 else
                 {

@@ -40,18 +40,42 @@ namespace DocflowApp.Controllers
                 var res = UserManager.CreateAsync(model.Entity, model.Password);
                 if (res.Result == IdentityResult.Success)
                 {
-                    GetFileProvider().Save(model.Entity.Avatar);
                     return RedirectToAction("Index");
                 }
             }
             return View(model);
         }
 
-        public ActionResult Info(long id)
+        public ActionResult Delete(long Id)
+        {
+            var user = userRepository.Load(Id);
+            userRepository.Delete(user);
+            return RedirectToBackUrl();
+        }
+
+
+        public ActionResult Edit(long id)
         {
             var user = userRepository.Load(id);
             return View(new UserViewModel { Entity = user });
         }
 
+        [HttpPost]
+        public ActionResult Edit(UserViewModel model)
+        {
+            userRepository.InvokeInTransaction(() => {
+                var user = userRepository.Load(model.Entity.Id);
+                user.UserName = model.Entity.UserName;
+                user.FIO = model.Entity.FIO;
+                userRepository.Save(user);
+            });
+            return RedirectToBackUrl();
+        }
+
+        public ActionResult UserInfo(long Id)
+        {
+            var user = userRepository.Load(Id);
+            return PartialView(user);
+        }
     }
 }
