@@ -1,0 +1,74 @@
+﻿@using DocflowApp.Extensions
+@using DocflowApp.Models.Filters
+@model IEnumerable<DocflowApp.Models.User>
+
+@{
+    ViewBag.Title = "Пользователи";
+}
+
+<h2>Пользователи</h2>
+<div>
+    @Html.Partial("Filter", new UserFilter())
+</div>
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.SortLink("Логин", "UserName", "Index", "User", null)
+        </th>
+        <th>
+            @Html.SortLink("ФИО", "FIO", "Index", "User", null)
+        </th>
+        <th>
+            @Html.SortLink("Дата приема", "WorkStartDate", "Index", "User", null)
+        </th>
+        <th>
+            Автор
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.UserName, "Info", "User", new { id = item.Id }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationAuthor)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="submit" style="display:none;"></div>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#result").dialog({
+            autoOpen: false,
+            title: 'Title',
+            width: 500,
+            height: 'auto',
+            modal: true
+        });
+    });
+    function openPopup() {
+        $("#result").dialog("open")
+    };
+
+</script>

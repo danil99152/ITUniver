@@ -1,0 +1,13 @@
+﻿using DocflowApp.Filters;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DocflowApp.Models.Filters
+{
+    public class DateRange : Range<DateTime?>
+    {
+    }
+}
