@@ -1,26 +1,26 @@
-﻿@model IEnumerable<DocflowApp.Models.Folder>
+﻿@model DocflowApp.Models.FolderViewModel
 @{
     ViewBag.Title = "Папки";
 }
 <h2>Папки</h2>
 <p>
-    @Html.ActionLink("Добавить", "Create")
+    @Html.ActionLink("Добавить", "Create", new { id = Model.Entity !=null ? Model.Entity.Id.ToString() : "" })
 </p>
 <table class="table">
     <tr>
         <td width=32 />
         <th>
-            @Html.DisplayNameFor(model => model.User)
+            @Html.DisplayNameFor(model => model.Entity.User)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Root)
+            @Html.DisplayNameFor(model => model.Entity.Root)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Entity.Date)
         </th>
         <th></th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Folders)
     {
         <tr>
             <td>

@@ -75,7 +75,7 @@ namespace DocflowApp.Controllers
         public ActionResult UserInfo(long Id)
         {
             var user = userRepository.Load(Id);
-            return PartialView(user);
+            return View("Info", new UserViewModel { Entity = user });
         }
     }
 }

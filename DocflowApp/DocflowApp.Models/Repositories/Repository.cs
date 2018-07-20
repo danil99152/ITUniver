@@ -22,7 +22,7 @@ namespace DocflowApp.Models.Repositories
             this.session = session;
         }
 
-        public virtual T Load(long id)
+        public virtual T Get(long id)
         {
             return session.Load<T>(id);
         }

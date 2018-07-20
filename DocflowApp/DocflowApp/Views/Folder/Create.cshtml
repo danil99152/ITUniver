@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Создание папки";
 }
-<h2>Новый пользователь</h2>
+<h2>Новая папка</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -16,9 +16,7 @@
                 @Html.ValidationMessageFor(model => model.Entity.FolderName, "", new { @class = "text-danger" })
             </div>
         </div>
-        @Html.HiddenFor(model => model.Entity.User)
-        @Html.HiddenFor(model => model.Entity.Date)
-        @Html.HiddenFor(model => model.Entity.Root)
+        @Html.HiddenFor(model => model.ParentFolder)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Создать" class="btn btn-default" />

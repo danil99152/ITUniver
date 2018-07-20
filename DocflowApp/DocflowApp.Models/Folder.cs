@@ -1,4 +1,5 @@
-﻿using DocflowApp.Models.Repositories;
+﻿using DocflowApp.Models.Listeners;
+using DocflowApp.Models.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -17,23 +18,17 @@ namespace DocflowApp.Models
         public virtual string FolderName { get; set; }
 
         [Display(Name = "Дата создания папки")]
+        [CreationDate]
         public virtual DateTime? Date { get; set; }
 
         [Display(Name = "Автор")]
+        [CreationAuthor]
         public virtual User User { get; set; }
 
         [Display(Name = "Корневая Папка")]
         public virtual Folder Root { get; set; }
 
-        private IList<Document> _documents;
-        public virtual IList<Document> Documents
-        {
-            get
-            {
-                return _documents ?? (_documents = new List<Document>());
-            }
-            set { _documents = value; }
-        }
+      
 
     }
 }

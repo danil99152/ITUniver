@@ -14,6 +14,6 @@ namespace DocflowApp.Models
 
         public long? ParentFolder { get; set; }
 
-
+        public IEnumerable<DocflowApp.Models.Folder> Folders { get; set; }
     }
 }

@@ -7,9 +7,7 @@ namespace DocflowApp.Models
         public DocumentMap()
         {
             Map(d => d.Version).Length(500);
-
-
-            References(x => x.Folder).Cascade.SaveUpdate();
+          
            // HasMany(x => x.Versions).Inverse().Cascade.SaveUpdate();
         }
     }

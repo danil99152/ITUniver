@@ -31,7 +31,10 @@ namespace DocflowApp.Controllers
                 Root = root.HasValue ? folderRepository.Load(root.Value) : null
             };
             var folders = folderRepository.Find(filter);
-            return View(folders);
+            return View(new FolderViewModel {
+                Folders = folders,
+                Entity = filter.Root
+            });
         }
 
         public ActionResult Create(long? root = null)
@@ -48,9 +51,7 @@ namespace DocflowApp.Controllers
         public ActionResult Create(FolderViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                model.Entity.User = CurrentUser;
-                model.Entity.Date = DateTime.Now;
+            {               
                 model.Entity.Root = model.ParentFolder.HasValue ?
                     folderRepository.Load(model.ParentFolder.Value) : null;
                 folderRepository.Save(model.Entity);

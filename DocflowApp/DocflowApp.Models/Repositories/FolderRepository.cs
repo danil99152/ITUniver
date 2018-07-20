@@ -46,6 +46,7 @@ namespace DocflowApp.Models.Repositories
                     }
                 }
             }
+            
             SetupFetchOptions(crit, options);
             return crit.List<Folder>();
         }
